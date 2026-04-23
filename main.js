@@ -545,7 +545,7 @@ const products = document.getElementById("products");
 const paginations = document.getElementById("paginations");
 
 
-let startIndex = 0 
+let startIndex = 0
 let endIndex = 12
 
 data.slice(startIndex, endIndex).forEach((pro) => {
@@ -587,11 +587,11 @@ for (let i = 1; i <= totalPage; i++) {
 
 
 function getPage(pageNum) {
-    startIndex = (pageNum -1 ) * 12
-    endIndex = pageNum *12
-products.innerHTML = ""
+    startIndex = (pageNum - 1) * 12
+    endIndex = pageNum * 12
+    products.innerHTML = ""
     data.slice(startIndex, endIndex).forEach((pro) => {
-    products.innerHTML += `
+        products.innerHTML += `
     <div class="max-w-sm bg-white border-2 border-gray-100 rounded-3xl p-5 shadow-lg hover:border-indigo-500">
         
        
@@ -603,7 +603,7 @@ products.innerHTML = ""
             
            
           ${pro.price < 79
-            ? `
+                ? `
      <div class="bg-yellow-400 text-black text-[12px] font-black uppercase 
                     py-1.5 w-[150px] text-center
                     absolute top-6 -left-10 -rotate-45 shadow-lg 
@@ -611,12 +611,42 @@ products.innerHTML = ""
             SALE
         </div>
 `
-            : ""
-        }
+                : ""
+            }
 
         </div>
         <h3 class="text-xl font-bold text-gray-800">${pro.name}</h3>
         <span class="text-2xl font-black text-gray-900">$${pro.price}</span>
     </div>`;
-});
+    });
 }
+
+
+
+
+
+function show() {
+    products.innerHTML = "";
+    const searchVal = document.getElementById("searchInput").value.toLowerCase();
+
+    const filtered = data.filter(pro => pro.name.toLowerCase().includes(searchVal));
+
+
+
+
+    filtered.forEach(pro => {
+        products.innerHTML += `
+            <div class="max-w-sm bg-white border-2 border-gray-100 rounded-3xl p-5 shadow-lg">
+                 <img class="rounded-2xl w-full mb-4"
+                src="${pro.img}"
+                alt="${pro.name}"
+                onerror="this.src='https://media.istockphoto.com/id/1396814518/vector/image-coming-soon-no-photo-no-thumbnail-image-available-vector-illustration.jpg?s=612x612&w=0&k=20&c=hnh2OZgQGhf0b46-J2z7aHbIWwq8HNlSDaNp2wn_iko='">
+                <h3 class="text-xl font-bold mt-4">${pro.name}</h3>
+                <span class="text-2xl font-black text-gray-900">$${pro.price}</span>
+            </div>`;
+    });
+}
+
+document.getElementById("searchInput").oninput = show;
+
+show();
