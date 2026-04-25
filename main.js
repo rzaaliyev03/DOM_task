@@ -554,7 +554,7 @@ data.slice(startIndex, endIndex).forEach((pro) => {
         
        
         <div class="relative">
-            <img class="rounded-2xl w-full mb-4"
+             <img class="rounded-2xl w-full mb-4"
                 src="${pro.img}"
                 alt="${pro.name}"
                 onerror="this.src='https://media.istockphoto.com/id/1396814518/vector/image-coming-soon-no-photo-no-thumbnail-image-available-vector-illustration.jpg?s=612x612&w=0&k=20&c=hnh2OZgQGhf0b46-J2z7aHbIWwq8HNlSDaNp2wn_iko='">
@@ -566,7 +566,7 @@ data.slice(startIndex, endIndex).forEach((pro) => {
                     py-1.5 w-[150px] text-center
                     absolute top-6 -left-10 -rotate-45 shadow-lg 
                     border-y border-yellow-500/20">
-            SALE
+            sale
         </div>
 `
             : ""
@@ -649,4 +649,4 @@ function show() {
 
 document.getElementById("searchInput").oninput = show;
 
-show();
+
